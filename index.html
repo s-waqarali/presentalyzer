@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Presentalyzer</title>
+  <title>Talk Genius</title>
 
   <style>
     /* Reset default styles */
@@ -34,10 +34,8 @@
     /* Global styles */
     body {
       font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      color: #333;
       line-height: 1.5;
-      background-image: url("");
+      background-image: url("https://img.freepik.com/premium-photo/blank-blue-cement-wall-texture-background_7190-199.jpg?w=2000");
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -97,25 +95,16 @@
     }
 
     main {
-      max-width: 800px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
       margin-top: 80px;
+      //background-color: #fff;
       /* Add margin to push content below the fixed header */
     }
 
-    :target:before {
-        content: "";
-        display: block;
-        height: 80px;
-        /* Height of the fixed header */
-        margin: -80px 0 0;
-        /* Negative margin to compensate for fixed header */
-      }
-
     section {
       margin-bottom: 40px;
-    }
     }
 
     h2 {
@@ -165,36 +154,142 @@
     .two-columns {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+    }
+
+    .two-columns-abt {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: -50px;
     }
 
     .component {
       flex-basis: 48%;
       margin: 0.1em;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding-left: 10px;
     }
 
-
+    .component-1 {
+      margin: 0.1em;
+      padding-left: 10px;
+    }
 
     /* Colorful styles */
     h3 {
+      font-size: 26px;
       color: #ff0066;
       margin-bottom: 10px;
     }
 
-    #result-container p {
-      color: red;
-      font-size: 10px;
+    #result-container {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
+
+    #result-container h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    #result-container p {
+      margin-top: 8px;
+      margin-bottom: 6px;
+      margin-left: 6px;
+      font-size: 16px;
+      font-family: "Georgia", serif;
+      color: #333;
+    }
+
+    .bar-container {
+      display: flex;
+      align-items: center;
+      height: 20px;
+      background-color: #dddddd;
+      border-radius: 10px;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 10px;
+    }
+
+    /* Keyframes for the animation */
+    @keyframes slideIn {
+      from {
+        width: 0%;
+      }
+    }
+
+    /* Colors for the bars */
+    .bar-bodyLanguage .bar-fill {
+      width: 0%;
+      animation: slideIn 1s ease-out;
+      background-color: #B2C858;
+    }
+
+    .bar-contentQuality .bar-fill {
+      width: 0%;
+      animation: slideIn 1s ease-out;
+      background-color: #4DC0DD ;
+    }
+
+    .bar-facialExpressions .bar-fill {
+      width: 0%;
+      animation: slideIn 1s ease-out;
+      background-color: #EFA366;
+    }
+
+    .bar-confidenceLevel .bar-fill {
+      width: 0%;
+      animation: slideIn 1s ease-out;
+      background-color: #A093C8;
+    }
+
 
     .component p {
       color: #666;
     }
 
+    .component-1 p {
+      font-family: "Lato", Sans-serif;
+      color: #00B4E3;
+      font-size: 34px;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    #hero {
+      font-size: 20px;
+    }
+
     /* Responsive styles */
     @media (max-width: 768px) {
+
+      .component-1 p {
+        text-align: center;
+        font-size: 24px;
+        padding-top: 0px;
+      }
+
+      .component-1 {
+        text-align: center;
+        padding-top: 0px;
+      }
+
+      .component-1-vector img {
+        width: 100%;
+        object-fit: cover;
+      }
+
+
+      #hero {
+        font-size: 16px;
+      }
 
       .logo img {
         height: 30px;
@@ -202,6 +297,15 @@
 
       h1 {
         font-size: 24px;
+      }
+
+      :target:before {
+        content: "";
+        display: block;
+        height: 80px;
+        /* Height of the fixed header */
+        margin: -80px 0 0;
+        /* Negative margin to compensate for fixed header */
       }
 
       #menu-toggle {
@@ -249,12 +353,24 @@
         margin-bottom: 20px;
         cursor: pointer;
       }
+
+      .two-columns {
+        flex-direction: column;
+      }
+
+      .two-columns-abt {
+        margin-top: 0px;
+        flex-direction: column;
+      }
+
+      .component {
+        flex-basis: 100%;
+        margin: 0.1em;
+      }
     }
   </style>
 
 </head>
-
-
 
 <body>
 
@@ -263,7 +379,7 @@
     <div class="logo">
       <img src="Logo.png" alt="Logo">
     </div>
-    <h1>Presentalyzer</h1>
+    <h1>Talk Genius</h1>
 
     <div id="menu-toggle">
       <div class="bar"></div>
@@ -282,14 +398,26 @@
 
   <main>
     <section id="hero">
-      <h3>Welcome to Presentalyzer</h3>
-      <p> Enhance your presentations with the power of artificial intelligence. Our cutting-edge web application offers
+      <h3>Welcome to Talk Genius</h3>
+      <p>Enhance your presentations with the power of artificial intelligence. Our cutting-edge web application offers
         valuable insights and analysis to make your presentations more impactful and engaging. Whether you are a
-        student, a professional, or anyone looking to captivate your audience, our AI-powered analysis will take your
+        student,
+        a professional, or anyone looking to captivate your audience, our AI-powered analysis will take your
         presentations to the next level.</p>
+      <div class="two-columns">
+        <div class="component-1">
+          <h4>For ambitious speakers, who want too:</h4>
+          <p>Sound more confident and become powerful public speakers</p>
+        </div>
+
+        <div class="component-1-vector">
+          <img src="https://cdni.iconscout.com/illustration/premium/thumb/businesslady-presenting-growth-presentation-3742614-3157400.png" alt="vector">
+        </div>
+      </div>
       <form id="upload-form">
-        <input type="file" accept="video/*" id="video-upload" required>
-        <!-- Video preview container -->
+        <h2>Try us with your presentation!</h2>
+
+        <input type="file" accept="video/*" id="video-upload"> <!-- require is removed temporarily -->
         <div id="video-preview-container"></div>
         <button type="button" id="record-button">Record Video</button>
         <button type="submit">Analyze Presentation</button>
@@ -300,24 +428,32 @@
 
     <section id="about">
       <h2>About Us</h2>
-      <div class="two-columns">
+      <div class="two-columns-abt">
         <div class="component">
           <h3>Our Vision</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sollicitudin lacus a augue ultrices, ac
+            cursus erat luctus. In sodales nisi a velit gravida interdum.Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit. Quisque sollicitudin lacus a augue ultrices, ac
             cursus erat luctus. In sodales nisi a velit gravida interdum.</p>
         </div>
 
+        <div class="component-1-vector">
+          <img src="https://cdni.iconscout.com/illustration/premium/thumb/online-shopping-3742604-3157391.png" alt="vector">
+        </div>
+      </div>
+      <div class="two-columns-abt">
+        <div class="component-1-vector">
+          <img src="https://cdni.iconscout.com/illustration/premium/thumb/growth-presentation-3742605-3157392.png?f=webp" alt="vector">
+        </div>
         <div class="component">
           <h3>Our Mission</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sollicitudin lacus a augue ultrices, ac
+            cursus erat luctus. In sodales nisi a velit gravida interdum.Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit. Quisque sollicitudin lacus a augue ultrices, ac
             cursus erat luctus. In sodales nisi a velit gravida interdum.</p>
         </div>
-      </div>
 
-      <div class="component">
-        <h3>Our Mission</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sollicitudin lacus a augue ultrices, ac
-          cursus erat luctus. In sodales nisi a velit gravida interdum.</p>
+
       </div>
     </section>
 
@@ -338,70 +474,83 @@
   </footer>
 
   <script>
-      const menuToggle = document.getElementById('menu-toggle');
-      const nav = document.getElementById('menu');
-      const menuItems = document.querySelectorAll('#menu a');
-    
-      menuToggle.addEventListener('click', () => {
-          nav.classList.toggle('open');
-      });
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('menu');
+    const menuItems = document.querySelectorAll('#menu a');
 
-      menuItems.forEach((menuItem) => {
-        menuItem.addEventListener('click', () =>  nav.classList.remove('open'));
-      });
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
 
-      // Handle form submissions
-      const uploadForm = document.getElementById('upload-form');
-      const resultContainer = document.getElementById('result-container');
+    menuItems.forEach((menuItem) => {
+      menuItem.addEventListener('click', () => nav.classList.remove('open'));
+    });
 
-      uploadForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const file = videoUpload.files[0] || recordedBlob; // Use the recorded video if available
-        if (file) {
-          resultContainer.innerHTML = 'Uploading and analyzing presentation...';
-          // Perform the analysis and update the resultContainer with the results
-          // You can add your own JavaScript logic here or make an API request to analyze the presentation
+    // Handle form submissions
+    const uploadForm = document.getElementById('upload-form');
+    const videoUpload = document.getElementById('video-upload');
+    const resultContainer = document.getElementById('result-container');
+    const recordButton = document.getElementById('record-button');
+
+    uploadForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const file = videoUpload.files[0]; // Use the recorded video if available
+      if (!file) {
+        resultContainer.style.display = 'block';
+        resultContainer.innerHTML = 'Uploading and analyzing presentation...';
+        // Perform the analysis and update the resultContainer with the results
+          const getRandomProbability = () => Math.random() * (1 - 0.5) + 0.5;
+          const analysisResults = {
+            bodyLanguage: getRandomProbability(),
+            contentQuality: getRandomProbability(),
+            facialExpressions: getRandomProbability(),
+            confidenceLevel: getRandomProbability(),
+          };
+
+          // Display analysis results in the resultContainer with bars
+          resultContainer.innerHTML = `
+            <h2>Analysis Results</h2>
+            
+            <p>Body Language: ${analysisResults.bodyLanguage.toFixed(2)}</p>
+            <div class="bar-container bar-bodyLanguage">
+              <div class="bar-fill"></div>
+            </div>
+
+            <p>Content Quality: ${analysisResults.contentQuality.toFixed(2)}</p>
+            <div class="bar-container bar-contentQuality">
+              <div class="bar-fill"></div>
+            </div>
+
+            <p>Facial Expressions: ${analysisResults.facialExpressions.toFixed(2)}</p>
+            <div class="bar-container bar-facialExpressions">
+              <div class="bar-fill"></div>
+            </div>
+
+            <p>Confidence Level: ${analysisResults.confidenceLevel.toFixed(2)}</p>
+            <div class="bar-container bar-confidenceLevel">
+              <div class="bar-fill"></div>
+            </div>
+          `;
+
+          // Update the bars based on the probabilities
+          updateBars(analysisResults);
+        // You can add your own JavaScript logic here or make an API request to analyze the presentation
+      }
+    });
+
+    function updateBars(analysisResults) {
+      const bars = {
+        bodyLanguage: document.querySelector('.bar-bodyLanguage .bar-fill'),
+        contentQuality: document.querySelector('.bar-contentQuality .bar-fill'),
+        facialExpressions: document.querySelector('.bar-facialExpressions .bar-fill'),
+        confidenceLevel: document.querySelector('.bar-confidenceLevel .bar-fill'),
+      };
+
+      for (const [key, value] of Object.entries(analysisResults)) {
+        const barFill = bars[key];
+        if (barFill) {
+          barFill.style.width = `${value * 100}%`;
         }
-      });
-
-      const contactForm = document.getElementById('contact-form');
-
-      contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        contactForm.reset();
-        // Display a success message
-        alert('Thank you for your message! We will get back to you soon.');
-      });
-
-      // Handle form submissions
-      const recordForm = document.getElementById('record-form');
-      const videoUpload = document.getElementById('video-upload');
-      const recordButton = document.getElementById('record-button');
-
-      uploadForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Handle file upload logic
-        const file = videoUpload.files[0];
-        if (file) {
-          resultContainer.innerHTML = 'Uploading and analyzing presentation...';
-          // Perform the analysis and update the resultContainer with the results
-          // You can add your own JavaScript logic here or make an API request to analyze the presentation
-        }
-      });
-
-    function handleWebcamError(error) {
-      if (error.name === "NotFoundError" || error.name === "DevicesNotFoundError") {
-        // Display a message indicating that no webcam is available
-        alert('Webcam not found. Recording feature is not available.');
-      } else if (error.name === "NotAllowedError" || error.name === "PermissionDeniedError") {
-        // Display a message indicating that access to the webcam was denied
-        alert('Access to webcam denied. Recording feature is not available.');
-      } else {
-        // Display a generic error message
-        resultContainer.innerHTML = alert('An error occurred while accessing the webcam.');
       }
     }
 
@@ -425,6 +574,19 @@
         downloadRecording();
       }
     });
+
+    function handleWebcamError(error) {
+      if (error.name === "NotFoundError" || error.name === "DevicesNotFoundError") {
+        // Display a message indicating that no webcam is available
+        alert('Webcam not found. Recording feature is not available.');
+      } else if (error.name === "NotAllowedError" || error.name === "PermissionDeniedError") {
+        // Display a message indicating that access to the webcam was denied
+        alert('Access to webcam denied. Recording feature is not available.');
+      } else {
+        // Display a generic error message
+        resultContainer.innerHTML = alert('An error occurred while accessing the webcam.');
+      }
+    }
 
     function startRecording(stream) {
       const videoPreviewContainer = document.getElementById('video-preview-container');
@@ -477,6 +639,18 @@
         downloadLink.click();
       }
     }
+
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      contactForm.reset();
+      // Display a success message
+      alert('Thank you for your message! We will get back to you soon.');
+    });
+
   </script>
 </body>
 
